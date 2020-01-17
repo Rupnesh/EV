@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Station Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col size="5">
+          <p>Station Name</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.stationName}}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <p>Agent Name</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.agentName}}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <p>Contact</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.contact}}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row style="height: auto !important; margin-top: 0 !important; margin-bottom: 0 !important;">
+        <ion-col size="5">
+          <p>Address</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.address}}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <p>Timing</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.timing}}</h6>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <p>Is (Public/Private)</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.isPublic === 'Yes' ? 'Public' : 'Private' }}</h6>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-bottom: 15px !important;">
+        <ion-col size="5">
+          <p>Status</p>
+        </ion-col>
+        <ion-col size="7">
+          <h6>{{stationDetails.status}}</h6>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-bottom: 15px !important;">
+        <ion-col size="5">
+          <p>Pricing</p>
+        </ion-col>
+        <ion-col size="7">
+
+          <ion-radio-group (ionChange)="radioPriceChange(selectPricing)" [(ngModel)]="selectPricing">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none" *ngFor="let type of stationDetails.pricingType">
+                <!-- <ion-label class="tag-label">{{type}}</ion-label> -->
+                <ion-icon *ngIf="type === 'price'" class="tag-label" name="logo-usd"></ion-icon>
+                <ion-icon *ngIf="type === 'units'" class="tag-label" name="md-flash"></ion-icon>
+                <ion-icon *ngIf="type === 'time'" class="tag-label" name="md-clock"></ion-icon>
+
+                <ion-radio [value]="type"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-bottom: 15px !important;">
+
+        <ion-col size="5">
+          <p>Select {{selectPricing}}</p>
+        </ion-col>
+        <ion-col size="7">
+
+          <ion-select [(ngModel)]="pricingPrice" *ngIf="selectPricing === 'price'" id="customPopoverSelect"
+            placeholder="Select One" style="padding-left: 0 !important;">
+            <ion-select-option *ngFor="let pricing of stationDetails.pricing" [value]="pricing.price">{{pricing.price}}
+            </ion-select-option>
+          </ion-select>
+          <ion-select [(ngModel)]="pricingUnits" *ngIf="selectPricing === 'units'" id="customPopoverSelect"
+            placeholder="Select One" style="padding-left: 0 !important;">
+            <ion-select-option *ngFor="let pricing of stationDetails.pricing" [value]="pricing.units">{{pricing.units}}
+            </ion-select-option>
+          </ion-select>
+          <ion-select [(ngModel)]="pricingTime" *ngIf="selectPricing === 'time'" id="customPopoverSelect"
+            placeholder="Select One" style="padding-left: 0 !important;">
+            <ion-select-option *ngFor="let pricing of stationDetails.pricing" [value]="pricing.time">{{pricing.time}}
+            </ion-select-option>
+          </ion-select>
+
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="5">
+          <p>Connector Type</p>
+        </ion-col>
+        <ion-col size="7">
+          <ion-radio-group (ionChange)="radioGroupChange(connetorSelected)" [(ngModel)]="connetorSelected">
+            <ion-row class="radio-tags">
+              <ion-item class="radio-tag" lines="none" *ngFor="let connetor of stationDetails.connectorType">
+                <ion-label class="tag-label">{{connetor}}</ion-label>
+                <ion-radio [value]="connetor"></ion-radio>
+              </ion-item>
+            </ion-row>
+          </ion-radio-group>
+
+
+        </ion-col>
+      </ion-row>
+
+
+
+    </ion-grid>
+
+    <ion-row style="height: auto !important;">
+      <ion-col size="12">
+
+        <ion-button style="margin: 16px;" class="submit-btn" expand="block" color="secondary" type="submit" fill="solid">PROCEED</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>
+

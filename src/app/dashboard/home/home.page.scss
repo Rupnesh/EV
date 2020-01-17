@@ -1,0 +1,36 @@
+:host {
+  .item-interactive.ion-valid,
+  .item-interactive.item-has-focus {
+    --highlight-background: transparent !important;
+  }
+  .item-native {
+    --border-color: none;
+  }
+}
+
+h6 {
+  overflow: hidden;
+  text-align: center;
+  margin: 16px 5px;
+}
+
+h6:before,
+h6:after {
+  background-color: #c1c1c1;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+h6:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+h6:after {
+  left: 0.5em;
+  margin-right: -50%;
+}

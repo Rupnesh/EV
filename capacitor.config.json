@@ -1,0 +1,15 @@
+{
+  "appId": "com.ionicthemes.ionic4fullapp",
+  "appName": "Ionic4FullApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  },
+  "server": {
+    "url": "http://192.168.0.127:8101"
+  }
+}
