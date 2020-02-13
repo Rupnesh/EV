@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 
 import { LanguageService } from '../../language/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from '../../services/storage.service'
 
 @Component({
   selector: 'app-user-profile',
@@ -21,7 +22,9 @@ export class UserProfilePage implements OnInit {
   profile: UserProfileModel;
   available_languages = [];
   translations;
+  userData:any = [];
 
+  profileSeg:any = 'details';
   @HostBinding('class.is-shell') get isShell() {
     return (this.profile && this.profile.isShell) ? true : false;
   }
@@ -30,11 +33,12 @@ export class UserProfilePage implements OnInit {
     private route: ActivatedRoute,
     public translate: TranslateService,
     public languageService: LanguageService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public storage: StorageService
   ) { }
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.route.data.subscribe((resolvedRouteData) => {
       const profileDataStore = resolvedRouteData['data'];
 
@@ -53,6 +57,10 @@ export class UserProfilePage implements OnInit {
       );
     },
     (error) => {});
+
+    if(await this.storage.getObject("USER_FB_DATA")) {
+      this.userData = await this.storage.getObject("USER_FB_DATA")
+    }
   }
 
   getTranslations() {

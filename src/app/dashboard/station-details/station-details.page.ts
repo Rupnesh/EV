@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 // import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
@@ -34,7 +34,7 @@ export class StationDetailsPage implements OnInit {
     toolTip: 'Sahyadri Farms Baner',
     distance: '0.0 km',
     timing: "07 AM to 11 PM",
-    isPublic: "Yes",
+    isPublic: "No",
     pricingType: ["price","units","time"],
     pricing: [
       { "units": "10kWh", "price": "20", "time": "10 minutes" },
@@ -47,7 +47,7 @@ export class StationDetailsPage implements OnInit {
     connectorType: ["C1", "C2", "C3", "C4"]
   }
 
-  constructor(private activatedRoute: ActivatedRoute, 
+  constructor(private activatedRoute: ActivatedRoute, public router: Router
     // private nativeGeocoder: NativeGeocoder
     ) { }
 
@@ -71,6 +71,11 @@ export class StationDetailsPage implements OnInit {
 
   radioPriceChange(type) {
     this.selectPricing = type;
+  }
+
+  proceed() {
+    this.router.navigate(['app/dashboard/charge'] , { queryParams: { profile: JSON.stringify(this.stationDetails) } } )
+    // this.router.navigate(['app/dashboard/charge'], { queryParams: { profile: JSON.stringify(item) } })
   }
 
   // async getCurrentPosition() {

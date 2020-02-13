@@ -12,7 +12,7 @@
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
           <app-aspect-ratio [ratio]="{w:915, h:849}">
-            <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/images/walkthrough-illustration-1.svg'" [alt]="'walkthrough'"></app-image-shell>
+            <app-image-shell class="illustration-image" animation="spinner" [src]="'assets/images/walkthrough-illustration-1.svg'" [alt]="'walkthrough'"></app-image-shell>
           </app-aspect-ratio>
         </ion-col>
         <ion-col class="decoration-col">
@@ -38,7 +38,7 @@
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
           <app-aspect-ratio [ratio]="{w:1096, h:806}">
-            <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/images/walkthrough-illustration-2.svg'" [alt]="'walkthrough'"></app-image-shell>
+            <app-image-shell class="illustration-image" animation="spinner" [src]="'assets/images/walkthrough-illustration-2.svg'" [alt]="'walkthrough'"></app-image-shell>
           </app-aspect-ratio>
         </ion-col>
         <ion-col class="decoration-col">
@@ -64,7 +64,7 @@
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
           <app-aspect-ratio [ratio]="{w:918, h:703}">
-            <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/images/walkthrough-illustration-3.svg'" [alt]="'walkthrough'"></app-image-shell>
+            <app-image-shell class="illustration-image" animation="spinner" [src]="'assets/images/walkthrough-illustration-3.svg'" [alt]="'walkthrough'"></app-image-shell>
           </app-aspect-ratio>
         </ion-col>
         <ion-col class="decoration-col">
@@ -87,7 +87,7 @@
       <ion-row class="slide-inner-row">
         <ion-col class="illustration-col">
           <app-aspect-ratio [ratio]="{w:924, h:819}">
-            <app-image-shell class="illustration-image" animation="spinner" [src]="'./assets/images/walkthrough-illustration-4.svg'" [alt]="'walkthrough'"></app-image-shell>
+            <app-image-shell class="illustration-image" animation="spinner" [src]="'assets/images/walkthrough-illustration-4.svg'" [alt]="'walkthrough'"></app-image-shell>
           </app-aspect-ratio>
         </ion-col>
         <ion-col class="decoration-col">
@@ -108,14 +108,17 @@
             </ion-col>
             <ion-col class="call-to-actions-wrapper">
               <!-- <ion-button class="get-started-button" expand="block" [routerLink]="['/getting-started']" (click)="getStarted()">Get Started</ion-button> -->
-              <ion-button class="get-started-button" expand="block" (click)="getStarted('start')">Get Started</ion-button>
-              <ion-row class="alt-call-to-action-row">
+              <!-- <ion-button class="get-started-button" expand="block" (click)="getStarted('start')">Get Started</ion-button> -->
+              <ion-button class="get-started-button" expand="block" (click)="getStarted('login')">Login here</ion-button>
+
+              <!-- <ion-row class="alt-call-to-action-row">
                 <span class="cta-leading-text">Already have an account?</span>
                 <ion-button class="login-button" fill="clear" (click)="getStarted('login')">
-                <!-- <ion-button class="login-button" fill="clear" [routerLink]="['/auth/login']" (click)="getStarted('login')"> -->
+                <ion-button class="login-button" fill="clear" [routerLink]="['/auth/login']" (click)="getStarted('login')">
                   Login here
                 </ion-button>
-              </ion-row>
+              </ion-row> -->
+
             </ion-col>
           </ion-row>
         </ion-col>

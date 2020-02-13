@@ -1,0 +1,28 @@
+{
+    "vehicles": [
+        {
+          "manufacturer": "Honda",
+          "model_name": "Ciaz",
+          "vehicleNo": "MH14GV1234",
+          "connector_type":"C1"
+        },
+        {
+          "manufacturer": "Honda",
+          "model_name": "Vertiga",
+          "vehicleNo": "MH14GV1235",
+          "connector_type":"C2"
+        },
+        {
+          "manufacturer": "Honda",
+          "model_name": "Xylo",
+          "vehicleNo": "MH14GV1236",
+          "connector_type":"C3"
+        },
+        {
+          "manufacturer": "Honda",
+          "model_name": "Kia",
+          "vehicleNo": "MH14GV1237",
+          "connector_type":"C4"
+        }
+    ]
+}

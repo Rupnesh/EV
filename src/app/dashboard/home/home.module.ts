@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
 
+import { DashBoardService} from '../dashboard.service'
+
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +23,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  providers: [DashBoardService]
 })
 export class HomePageModule {}

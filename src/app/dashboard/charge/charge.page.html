@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Charging</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <ion-card>
+    <ion-row class="ion-padding">
+      <ion-col size="7">
+        <h6 style="margin: 0;">{{stationDetails.stationName}}</h6>
+      </ion-col>
+      <ion-col size="5" (click)="callStation(stationDetails.contact)" class="ion-text-right">
+        <span style="text-decoration: underline;">
+          <ion-icon style="margin-right:5px" name="call" color="secondary"></ion-icon>
+          {{stationDetails.contact}}
+          
+        </span>
+      </ion-col>
+      <ion-col size="12">
+        <ion-icon style="margin-right:5px" name="pin" color="secondary"></ion-icon> {{stationDetails.address}}
+        <!-- <p style="margin: 0;">{{stationDetails.address}}</p> -->
+      </ion-col>
+    </ion-row>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">CHARGING STATUS</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+
+
+      <ion-row>
+        <ion-col size="12" class="grid-item" *ngIf="charge">
+          <div id="loading3" class="ion-text-center">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div class="line4"></div>
+          </div>
+        </ion-col>
+        <ion-col size="12" class="grid-item" *ngIf="!charge">
+          <div id="loading4" class="ion-text-center">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+            <div class="line4"></div>
+          </div>
+        </ion-col>
+
+
+        <ion-col size="4" class="ion-text-center progress">
+          <p>Time</p>
+          <p>4</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center progress">
+          <p>kWh</p>
+          <p>5</p>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center progress">
+          <p>Cost</p>
+          <p>10</p>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+
+          <ion-button [disabled]="charge" (click)="startCharging()" style="margin: 16px 0;" class="submit-btn"
+            expand="block" color="secondary" type="submit" fill="solid">START</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button [disabled]="!charge" (click)="stopCharging()" style="margin: 16px 0;" class="submit-btn"
+            expand="block" color="secondary" type="submit" fill="solid">STOP</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

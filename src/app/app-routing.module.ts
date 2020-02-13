@@ -17,12 +17,24 @@ const routes: Routes = [
   { path: 'page-not-found', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
   { path: 'firebase', loadChildren: () => import('./firebase/firebase-integration.module').then(m => m.FirebaseIntegrationModule) },
   
-
+  { path: 'vehicles', loadChildren: () => import('./vehicles/vehicles.module').then(m => m.VehiclesPageModule) },
+  
   
   { path: '**', redirectTo: 'page-not-found' },
   { path: 'station-details', loadChildren: './dashboard/station-details/station-details.module#StationDetailsPageModule' },
-  { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
-  { path: 'search-near-by', loadChildren: './dashboard/search-near-by/search-near-by.module#SearchNearByPageModule' }
+
+  // { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
+  
+
+
+
+  { path: 'search-near-by', loadChildren: './dashboard/search-near-by/search-near-by.module#SearchNearByPageModule' },
+  { path: 'charge', loadChildren: './dashboard/charge/charge.module#ChargePageModule' },
+  { path: 'history', loadChildren: './history/history.module#HistoryPageModule' },
+  { path: 'stationhistory', loadChildren: './stationhistory/stationhistory.module#StationhistoryPageModule' },
+  { path: 'bill', loadChildren: './dashboard/bill/bill.module#BillPageModule' },
+  { path: 'create', loadChildren: './vehicles/create/create.module#CreatePageModule' },
+  { path: 'listing', loadChildren: './vehicles/listing/listing.module#ListingPageModule' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

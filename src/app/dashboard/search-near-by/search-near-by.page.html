@@ -15,57 +15,44 @@
     </ion-fab-button>
   </ion-fab>
 
-  <google-map [mapOptions]="mapOptions"></google-map>
+  <ion-item-divider sticky style="padding-left: 0;height: 30%;">
+    <google-map sticky [mapOptions]="mapOptions"></google-map>
+  </ion-item-divider>
 
-  <!-- <ion-list class="items-list" *ngIf="stationList?.length > 0">
-    <ion-item class="list-item" *ngFor="let item of stationList" (click)="showDeatils(item)">
-      <ion-row class="user-row" style="width: 100%;">
-        <ion-col class="user-data-wrapper" size="12">
-          <div class="user-info">
-            <div >   
-              <ion-item lines="none">
-                <h5 slot="start" class="user-name" >
-                  {{ (item.stationName.length > 15 )? (item.stationName | slice:0:15)+'..':(item.stationName) }}
-                </h5>
-                <span slot="end" [ngStyle]="{'color':item.status ? 'green' : 'red' }" >{{item.status ? 'Open' : 'Closed'}}</span>
-              </ion-item>
-            </div>
-            <ion-item lines="none">
-              <span slot="start">{{item.address}}</span>
-              <span slot="end">{{item.distance}}</span>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-list> -->
-
-  <ion-card *ngFor="let item of stationList" (click)="showDeatils(item)">
-    <ion-card-header style="padding-bottom: 5px;">
-      <!-- <ion-card-title color="secondary">{{item.stationName}}</ion-card-title> -->
-
-      <!-- <h5 color="secondary">{{item.stationName}}</h5>
-      <span [ngStyle]="{'color':item.status ? 'green' : 'red' }">{{item.status ? 'Open' : 'Closed'}}</span> -->
+  <div *ngIf="stations?.length > 0">
 
 
-      <span item-left style="color: #FF0062;">{{item.stationName}}</span>
-      <span item-right [ngStyle]="{'color':item.status ? '#4CAF50' : '#FF0062' }">
-        <div class="pull-right" style="float: right">
-          {{item.status ? 'Open' : 'Closed'}}
-        </div>
-      </span>
-
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        <ion-col style="padding: 0 !important;" size="9">{{item.address}}</ion-col>
-        <ion-col style="padding: 0 !important; text-align: right;" size="3">{{item.distance}}</ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+    <ion-card *ngFor="let item of stationList" (click)="showDeatils(item)">
 
 
-  <h3 *ngIf="stationList?.length == 0" class="empty-list-message">
+      <ion-card-content>
+
+        <ion-row style="margin-bottom: 5px;">
+          <ion-col style="padding: 0 !important;" size="9">
+            <strong>
+              <app-text-shell animation="bouncing" [data]="item?.stationName"></app-text-shell>
+            </strong>
+          </ion-col>
+          <ion-col style="padding: 0 !important; text-align: right;" size="3">
+            <app-text-shell animation="bouncing" [ngStyle]="{'color':item?.status == 'Open' ? '#4CAF50' : '#FF0062' }"
+              [data]="item?.status"></app-text-shell>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col style="padding: 0 !important;" size="9">
+            <app-text-shell animation="bouncing" [data]="item?.address"></app-text-shell>
+          </ion-col>
+          <ion-col style="padding: 0 !important; text-align: right;" size="3">
+            <app-text-shell animation="bouncing" [data]="item?.distance"></app-text-shell>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+  <h3 *ngIf="stations?.length == 0" class="empty-list-message">
     No users found for the selected filters.
   </h3>
 

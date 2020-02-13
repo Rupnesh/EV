@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Vehicles
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button fill="clear" (click)="addVehicles()">
+        <ion-icon slot="end" name="add"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" (click)="logoutUser()">
+        <ion-icon slot="end" name="power"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="firebase-listing-content">
+  <ion-list class="items-list" *ngIf="vehicles?.length > 0">
+    <ion-item class="list-item" *ngFor="let item of vehicles">
+      <ion-row class="user-row">
+        <!-- <ion-col size="3" class="user-image-wrapper"> 
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell class="user-image" animation="spinner" [mode]="'cover'" [src]="item.avatar" [alt]="'item image'"></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col> -->
+        <ion-col class="user-data-wrapper">
+          <div class="user-info">
+            <h3 class="user-name">
+              <app-text-shell animation="bouncing" [data]="item.model_name"></app-text-shell>
+            </h3>
+            <h5 class="user-age">
+              <app-text-shell animation="bouncing" [data]="item.vehicleNo"></app-text-shell>
+            </h5>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <h3 *ngIf="vehicles?.length == 0" class="empty-list-message">
+    No users found for the selected filters.
+  </h3>
+</ion-content>

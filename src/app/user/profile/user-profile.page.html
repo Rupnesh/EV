@@ -17,32 +17,36 @@
       <ion-row class="user-data-row">
         <ion-col size="9">
           <h3 class="user-name">
-            <app-text-shell [data]="profile.name"></app-text-shell>
+            <app-text-shell data="Rupnesh Sharma"></app-text-shell>
           </h3>
           <h5 class="user-title">
-            <app-text-shell [data]="profile.job"></app-text-shell>
+            <!-- <app-text-shell [data]="profile.job"></app-text-shell> -->
           </h5>
         </ion-col>
-        <ion-col class="membership-col">
+        <!-- <ion-col class="membership-col"> 
           <span class="user-membership">
             <app-text-shell [data]="profile.membership"></app-text-shell>
           </span>
-        </ion-col>
-      </ion-row>
-      <ion-row class="actions-row">
-        <ion-col class="main-actions">
-          <ion-button class="call-to-action-btn" size="small" color="primary">{{ 'FOLLOW' | translate }}</ion-button>
-          <ion-button class="call-to-action-btn" size="small" color="medium">{{ 'MESSAGE' | translate }}</ion-button>
-        </ion-col>
-        <ion-col class="secondary-actions">
+        </ion-col> -->
+
+        <ion-col class="secondary-actions" style="text-align: right;">
           <ion-button class="more-btn" size="small" fill="clear" color="medium" (click)="openLanguageChooser()">
             <ion-icon slot="icon-only" name="more"></ion-icon>
           </ion-button>
         </ion-col>
+
+      </ion-row>
+      <ion-row class="actions-row">
+        <ion-col class="main-actions">
+          <ion-button class="call-to-action-btn" size="small" color="primary">WALLET</ion-button>
+          <!-- <ion-button class="call-to-action-btn" size="small" color="medium">{{ 'MESSAGE' | translate }}</ion-button> -->
+        </ion-col>
+
       </ion-row>
     </ion-col>
   </ion-row>
-  <ion-row class="user-stats-section">
+
+  <!-- <ion-row class="user-stats-section">
     <ion-col class="user-stats-wrapper" size="4">
       <span class="stat-value">
         <app-text-shell [data]="profile.likes"></app-text-shell>
@@ -61,42 +65,120 @@
       </span>
       <span class="stat-name">{{ 'FOLLOWING' | translate }}</span>
     </ion-col>
-  </ion-row>
-  <div class="user-about-section">
-    <h3 class="details-section-title">{{ 'ABOUT' | translate }}</h3>
-    <p class="user-description">
-      <app-text-shell animation="bouncing" lines="4" [data]="profile.about"></app-text-shell>
-    </p>
-  </div>
-  <div class="user-friends-section">
-    <ion-row class="heading-row">
-      <h3 class="details-section-title">{{ 'FRIENDS' | translate }}</h3>
-      <a class="heading-call-to-action" [routerLink]="['/app/user/friends']">{{ 'SEE_ALL' | translate }}</a>
-    </ion-row>
-    <ion-row class="friends-row">
-      <ion-col class="friend-item" size="2" *ngFor="let friend of profile.friends">
-        <app-aspect-ratio [ratio]="{w: 1, h: 1}">
-          <app-image-shell class="friend-picture" [src]="friend.image"></app-image-shell>
-        </app-aspect-ratio>
-        <span class="friend-name">
-          <app-text-shell [data]="friend.name"></app-text-shell>
-        </span>
-      </ion-col>
-    </ion-row>
-  </div>
+  </ion-row> -->
 
-  <div class="user-photos-section">
-    <ion-row class="heading-row">
-      <h3 class="details-section-title">{{ 'PHOTOS' | translate }}</h3>
-      <a class="heading-call-to-action">{{ 'SEE_ALL' | translate }}</a>
-    </ion-row>
-    <ion-row class="pictures-row">
-      <ion-col class="picture-item" size="2" *ngFor="let photo of profile.photos">
-        <app-image-shell [mode]="'cover'" [src]="photo.image" class="user-photo-image">
-          <app-aspect-ratio [ratio]="{w:1, h:1}">
-          </app-aspect-ratio>
-        </app-image-shell>
-      </ion-col>
-    </ion-row>
-  </div>
+
+  <ion-item-group>
+    <ion-item-divider sticky style="padding-left: 0;">
+
+      <ion-segment [(ngModel)]="profileSeg" color="primary">
+        <ion-segment-button value="details">
+          Details
+        </ion-segment-button>
+        <ion-segment-button value="vehicles">
+          Vehicles
+        </ion-segment-button>
+      </ion-segment>
+
+    </ion-item-divider>
+
+    <div [ngSwitch]="profileSeg">
+      <ion-list *ngSwitchCase="'details'" class="ion-padding">
+  
+        <ion-row>
+          <ion-col size="4">Address</ion-col>
+          <ion-col size="8">Nigdi Pune</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">Gender</ion-col>
+          <ion-col size="8">Male</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">Contact</ion-col>
+          <ion-col size="8">9762800594</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">Email</ion-col>
+          <ion-col size="8">sharmarupnesh@gmail.com</ion-col>
+        </ion-row>
+        
+        
+
+
+
+  
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'vehicles'" class="ion-padding">
+        <ion-row>
+          <ion-col size="3.5">Manufacturer</ion-col>
+          <ion-col size="2">Model</ion-col>
+          <ion-col size="3.5">Number</ion-col>
+          <ion-col size="3">Conn. Type</ion-col>
+          <ion-item-divider style="margin-top: -20px;z-index: -9999;"></ion-item-divider>
+        </ion-row>
+  
+        <ion-row>
+          <ion-col size="3.5">Honda</ion-col>
+          <ion-col size="2">Z1</ion-col>
+          <ion-col size="3.5">MH14GV1234</ion-col>
+          <ion-col size="3">C1</ion-col>
+        </ion-row>
+      </ion-list>
+  
+    </div>
+  </ion-item-group>
+
+
+  <!-- <ion-segment [(ngModel)]="profileSeg" color="primary">
+    <ion-segment-button value="details">
+      Details
+    </ion-segment-button>
+    <ion-segment-button value="vehicles">
+      Vehicles
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="profileSeg">
+    <ion-list *ngSwitchCase="'details'" class="ion-padding">
+
+      <ion-row>
+        <ion-col size="4">Address</ion-col>
+        <ion-col size="8">Nigdi Pune</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">Gender</ion-col>
+        <ion-col size="8">Male</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">Contact</ion-col>
+        <ion-col size="8">9762800594</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">Email</ion-col>
+        <ion-col size="8">sharmarupnesh@gmail.com</ion-col>
+      </ion-row>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'vehicles'" class="ion-padding">
+      <ion-row>
+        <ion-col size="3.5">Manufacturer</ion-col>
+        <ion-col size="2">Model</ion-col>
+        <ion-col size="3.5">Number</ion-col>
+        <ion-col size="3">Conn. Type</ion-col>
+        <ion-item-divider style="margin-top: -20px;z-index: -9999;"></ion-item-divider>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="3.5">Honda</ion-col>
+        <ion-col size="2">Z1</ion-col>
+        <ion-col size="3.5">MH14GV1234</ion-col>
+        <ion-col size="3">C1</ion-col>
+      </ion-row>
+    </ion-list>
+
+  </div> -->
+
+
 </ion-content>

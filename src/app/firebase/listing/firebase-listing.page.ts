@@ -61,6 +61,7 @@ export class FirebaseListingPage implements OnInit, OnDestroy {
     this.route.data.subscribe(
       (resolvedRouteData) => {
         this.listingDataStore = resolvedRouteData['data'];
+        console.log(this.listingDataStore)
 
         // We need to avoid having multiple firebase subscriptions open at the same time to avoid memory leaks
         // By using a switchMap to cancel previous subscription each time a new one arrives,

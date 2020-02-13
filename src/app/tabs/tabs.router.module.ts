@@ -50,13 +50,25 @@ const routes: Routes = [
           {
             path: 'search-near-by',
             loadChildren: () => import('../dashboard/search-near-by/search-near-by.module').then(m => m.SearchNearByPageModule)
+          },
+          {
+            path: 'charge',
+            loadChildren: () => import('../dashboard/charge/charge.module').then(m => m.ChargePageModule)
+          },
+          {
+            path: 'bill',
+            loadChildren: () => import('../dashboard/bill/bill.module').then(m => m.BillPageModule)
           }
         ]
       },
 
+      // {
+      //   path: 'vehicles',
+      //   loadChildren: () => import('../vehicles/vehicles.module').then(m => m.VehiclesPageModule)
+      // },
       {
-        path: 'vehicles',
-        loadChildren: () => import('../vehicles/vehicles.module').then(m => m.VehiclesPageModule)
+        path: 'history',
+        loadChildren: () => import('../history/history.module').then(m => m.HistoryPageModule)
       }
 
 

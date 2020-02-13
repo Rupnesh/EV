@@ -14,8 +14,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding-top">
-  
+<!-- <ion-content *ngIf="isOn" [class.show-qr-scanner]="isOn"> -->
+<ion-content *ngIf="isOn">
+
+  <div id="close-scanner-button" text-center>
+    <ion-button (click)="closeScanner()" color="warning">
+      Close
+    </ion-button>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!isOn" class="ion-padding-top">
+
+
+
 
   <ion-row>
     <ion-col>
@@ -25,12 +37,14 @@
 
   <ion-row class="form-actions-wrapper">
     <ion-col>
-      <ion-button class="submit-btn" expand="block" color="secondary" type="submit" fill="solid">SCAN QR CODE
+
+      <ion-button (click)="scanCode()" class="submit-btn" expand="block" color="secondary" type="submit" fill="solid">
+        <ion-icon slot="start" name="md-qr-scanner"></ion-icon>SCAN QR CODE
       </ion-button>
     </ion-col>
   </ion-row>
 
-  
+
   <ion-row>
     <ion-col class="ion-text-center">
       <ion-label>Scan QR Code from Charging Station</ion-label>
@@ -47,7 +61,7 @@
   </ion-row>
 
   <ion-row>
-    <ion-item style="width: 100%; padding: 16px;" >
+    <ion-item style="width: 100%; padding: 16px;">
       <ion-col size="10">
         <ion-input [(ngModel)]="stationID" placeholder="Enter Station ID"></ion-input>
       </ion-col>
@@ -75,17 +89,18 @@
 
   <ion-row>
     <ion-col>
-      <ion-button (click)="serachNearBy()" class="submit-btn" expand="block" color="secondary" type="submit" fill="solid">SEARCH NEAR BY
+      <ion-button (click)="serachNearBy()" class="submit-btn" expand="block" color="secondary" type="submit"
+        fill="solid">SEARCH NEAR BY
       </ion-button>
     </ion-col>
   </ion-row>
 
-  
+
 
 </ion-content>
 
-<ion-footer>
-  <ion-row >
+<ion-footer style="background: #ffffff !important;">
+  <ion-row>
     <ion-col size="6">
       <ion-button class="submit-btn" expand="block" color="secondary" type="submit" fill="solid">HISTORY</ion-button>
     </ion-col>

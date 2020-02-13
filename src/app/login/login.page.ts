@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
     private fb: Facebook
   ) {
     this.loginForm = new FormGroup({
-      'email': new FormControl('test@test.com', Validators.compose([
+      'email': new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ])),
@@ -63,6 +63,7 @@ export class LoginPage implements OnInit {
 
   doLogin(): void {
     console.log('do Log In');
+    this.storage.setItem('LOGIN_STATUS','true')
     this.router.navigate(['app/dashboard']); 
   }
 

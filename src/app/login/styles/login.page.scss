@@ -5,6 +5,12 @@
   --page-background: var(--app-background-shade);
 }
 
+.vertical-align-content > * {
+  display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
 .login-content {
   --background: var(--page-background);

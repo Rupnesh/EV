@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bill</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-content ion-text-center vertical-align-content">
+
+  <ion-grid style="height: 100%; width: 100%;">
+    <ion-row style="width: 100%;">
+      <ion-col size="12">
+
+        <ion-row style="margin-bottom: 16px;" class="ion-justify-content-center">
+          <ion-col size="12">
+            <ion-img style="height:80px;width:80px; margin: auto;" src="../../assets/logo.png"></ion-img>
+            <h4 class="ion-text-center">Invoice</h4>
+          </ion-col>
+
+          <ion-col size="8">
+            <ion-row class="ion-text-left">
+              <ion-col style="height:32px" size="7">
+                <h6>Charge Duration</h6>
+              </ion-col>
+              <ion-col style="height:32px" size="5" class="ion-text-right">
+                <p>1 hour</p>
+              </ion-col>
+
+              <ion-col style="height:32px" size="7">
+                <h6>Energy Consumed</h6>
+              </ion-col>
+              <ion-col style="height:32px" size="5" class="ion-text-right">
+                <p>50 kW</p>
+              </ion-col>
+
+              <ion-col style="height:32px" size="7">
+                <h6>Bill Charged</h6>
+              </ion-col>
+              <ion-col style="height:32px" size="5" class="ion-text-right">
+                <p>50</p>
+              </ion-col>
+
+              <ion-col style="height:32px" size="7">
+                <h6>Other Charges</h6>
+              </ion-col>
+              <ion-col style="height:32px" size="5" class="ion-text-right">
+                <p>5</p>
+              </ion-col>
+
+              <ion-item-divider style="margin-top: 16px;"></ion-item-divider>
+
+              <ion-col style="height:32px" size="7">
+                <h6>Total</h6>
+              </ion-col>
+              <ion-col style="height:32px" size="5" class="ion-text-right">
+                <p>55</p>
+              </ion-col>
+
+
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="8">
+            <ion-button expand="block" color="secondary" (click)="doFacebookLogin()">Payment</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

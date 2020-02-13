@@ -19,8 +19,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { StorageService } from './services/storage.service';
+import { LoaderService } from './services/loading.service';
 // import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+// import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -49,7 +53,11 @@ export function createTranslateLoader(http: HttpClient) {
     // NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     StorageService, 
-    Facebook
+    LoaderService,
+    Facebook,
+    CallNumber,
+    // BarcodeScanner,
+    QRScanner
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,10 @@ ion-row {
   height: 40px !important;
 }
 
+ion-icon {
+  color: var(--ion-color-secondary)
+}
+
 .radio-tags {
   padding: 0px calc(var(--page-margin) - var(--page-tags-gutter));
   //background-color: var(--page-background);

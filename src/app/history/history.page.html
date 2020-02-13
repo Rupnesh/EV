@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      History
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button fill="clear" (click)="logoutUser()">
+        <ion-icon slot="end" style="color: #fff;" name="power"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="history" color="primary">
+    <ion-segment-button value="today">
+      Today
+    </ion-segment-button>
+    <ion-segment-button value="week">
+      This week
+    </ion-segment-button>
+    <ion-segment-button value="month">
+      This month
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="history">
+    <ion-list *ngSwitchCase="'today'">
+
+      <ion-row class="ion-padding" *ngFor="let item of todaysData">
+        <div style="width: 100%;">
+          <div style="float: left;"><strong>{{item.stationName}}</strong></div>
+          <div style="float: right;"><ion-icon name="calendar"></ion-icon><span>{{item.date}}</span></div>
+        </div>
+        <div style="width: 100%;">
+          <div style="float: left;"><ion-icon name="time"></ion-icon><span>{{item.chargeDuration}}</span></div>
+          <div style="float: right;"><ion-icon name="logo-usd"></ion-icon><span>{{item.amount}}</span></div>
+        </div>
+        <ion-item-divider></ion-item-divider>
+      </ion-row>
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'week'">
+      <ion-row class="ion-padding" *ngFor="let item of weeksData">
+        <div style="width: 100%;">
+          <div style="float: left;"><strong>{{item.stationName}}</strong></div>
+          <div style="float: right;"><ion-icon name="calendar"></ion-icon><span>{{item.date}}</span></div>
+        </div>
+        <div style="width: 100%;">
+          <div style="float: left;"><ion-icon name="time"></ion-icon><span>{{item.chargeDuration}}</span></div>
+          <div style="float: right;"><ion-icon name="logo-usd"></ion-icon><span>{{item.amount}}</span></div>
+        </div>
+        <ion-item-divider></ion-item-divider>
+      </ion-row>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'month'">
+      <ion-row class="ion-padding" *ngFor="let item of data">
+        <div style="width: 100%;">
+          <div style="float: left;"><strong>{{item.stationName}}</strong></div>
+          <div style="float: right;"><ion-icon name="calendar"></ion-icon><span>{{item.date}}</span></div>
+        </div>
+        <div style="width: 100%;">
+          <div style="float: left;"><ion-icon name="time"></ion-icon><span>{{item.chargeDuration}}</span></div>
+          <div style="float: right;"><ion-icon name="logo-usd"></ion-icon><span>{{item.amount}}</span></div>
+        </div>
+        <ion-item-divider></ion-item-divider>
+      </ion-row>
+    </ion-list>
+  </div>
+
+</ion-content>

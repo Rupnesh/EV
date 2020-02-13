@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+// import { Platform } from '@ionic/angular';
 import { Plugins } from '@capacitor/core';
-const { SplashScreen } = Plugins;
+const { SplashScreen, Device } = Plugins;
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { Router } from '@angular/router'
@@ -17,10 +18,20 @@ import { StorageService } from './services/storage.service'
 })
 export class AppComponent {
   appPages = [
-    
+
+    // {
+    //   title: 'Vehicles',
+    //   url: '/app/vehicles',
+    //   icon: './assets/sample-icons/side-menu/categories.svg'
+    // },
     {
-      title: 'Vehicles',
-      url: '/app/vehicles',
+      title: 'History',
+      url: '/app/history',
+      icon: './assets/sample-icons/side-menu/categories.svg'
+    },
+    {
+      title: 'Station Visited',
+      url: '/app/stationhistory',
       icon: './assets/sample-icons/side-menu/categories.svg'
     },
     {
@@ -39,11 +50,12 @@ export class AppComponent {
       icon: './assets/sample-icons/side-menu/notifications.svg'
     }
   ];
-  
+
 
   textDir = 'ltr';
 
-  userData:any = [];
+  userData: any = [];
+  info:any = [];
 
   constructor(public translate: TranslateService, private router: Router, public storage: StorageService) {
     this.initializeApp();
@@ -53,6 +65,10 @@ export class AppComponent {
   async initializeApp() {
     try {
       await SplashScreen.hide();
+
+      this.info = await Device.getInfo();
+      // console.log(this.info)
+
       var tutorialStatus = await this.storage.getItem("TUTORIAL_COMPLETED");
       var loginStatus = await this.storage.getItem("LOGIN_STATUS");
 
@@ -61,7 +77,15 @@ export class AppComponent {
       // }
 
       this.userData = await this.storage.getObject("USER_FB_DATA")
-      console.log("userdata111 ...",this.userData)
+      // if(await this.storage.getObject("USER_FB_DATA")) {
+      //   this.userData = await this.storage.getObject("USER_FB_DATA")
+      //   console.log("fbbb...",this.userData)
+      // }
+
+      // await this.storage.getObject("USER_FB_DATA").then((result) => {
+      //   this.userData = result
+      //   console.log("fbbb than...",this.userData)
+      // });
 
       if (tutorialStatus && loginStatus) {
         this.router.navigate(['app/dashboard/home']);
